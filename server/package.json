@@ -12,16 +12,20 @@
   "dependencies": {
     "apollo-server-express": "^3.5.0",
     "axios": "^0.24.0",
+    "chalk": "^4.1.2",
     "class-validator": "^0.13.1",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "graphql": "^16.0.1",
+    "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.1.8",
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
     "@types/node": "^16.11.9",
     "nodemon": "^2.0.15",
     "tslint": "^6.1.3",
