@@ -10,7 +10,7 @@ export class TitleResolver {
   @Query(returns => TitleData, {
     description: "Get the title details given the id",
   })
-  async title(
+  async getTitle(
     @Arg("titleInput") input: TitleInput
   ): Promise<TitleData | string> {
     try {
