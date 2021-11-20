@@ -5,3 +5,5 @@ export const searchMovieUrl = "/SearchMovie";
 export const searchSeriesUrl = "/SearchSeries";
 
 export const searchNameUrl = "/SearchName";
+
+export const searchEpisodesUrl = "/SearchEpisode";
