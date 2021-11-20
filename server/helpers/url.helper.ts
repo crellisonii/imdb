@@ -1,4 +1,9 @@
-import { baseUrl, searchMovieUrl, searchSeriesUrl } from "../constants";
+import {
+  baseUrl,
+  searchMovieUrl,
+  searchNameUrl,
+  searchSeriesUrl,
+} from "../constants";
 
 import { apiKey } from "../env";
 
@@ -10,7 +15,7 @@ const getUrlSuffix = (expression: string): string => {
   return `/${apiKey}/${expression}`;
 };
 
-export const getSearchMovieUrl = (expression: string, language: string) => {
+export const getSearchMoviesUrl = (expression: string, language: string) => {
   return `${getUrlPrefix(language)}${searchMovieUrl}${getUrlSuffix(
     expression
   )}`;
@@ -21,3 +26,8 @@ export const getSearchSeriesUrl = (expression: string, language: string) => {
     expression
   )}`;
 };
+
+export const getSearchNamesUrl = (expression: string, language: string) => {
+  return `${getUrlPrefix(language)}${searchNameUrl}${getUrlSuffix(expression)}`;
+};
+
