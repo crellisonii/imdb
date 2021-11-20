@@ -1,5 +1,6 @@
 import {
   baseUrl,
+  fullCastUrl,
   searchAllUrl,
   searchCompanyUrl,
   searchEpisodesUrl,
@@ -15,12 +16,20 @@ const getUrlPrefix = (language: string): string => {
   return `${baseUrl}/${language}/API`;
 };
 
+const getFullCastSuffix = (id: string): string => {
+  return `/${apiKey}/${id}`;
+};
+
 const getSearchUrlSuffix = (expression: string): string => {
   return `/${apiKey}/${expression}`;
 };
 
-const getTitleUrlSuffix = (id: string, options: string) => {
+const getTitleUrlSuffix = (id: string, options: string): string => {
   return `/${apiKey}/${id}/${options}`;
+};
+
+export const getFullCastUrl = (id: string, language: string): string => {
+  return `${getUrlPrefix(language)}${fullCastUrl}${getFullCastSuffix(id)}`;
 };
 
 export const getSearchAllUrl = (expression: string, language: string) => {
