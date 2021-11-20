@@ -1,9 +1,11 @@
 export const baseUrl = "https://imdb-api.com";
 
-export const searchMovieUrl = "/SearchMovie";
+export const searchCompanyUrl = "/SearchCompany";
 
-export const searchSeriesUrl = "/SearchSeries";
+export const searchEpisodesUrl = "/SearchEpisode";
+
+export const searchMovieUrl = "/SearchMovie";
 
 export const searchNameUrl = "/SearchName";
 
-export const searchEpisodesUrl = "/SearchEpisode";
+export const searchSeriesUrl = "/SearchSeries";
