@@ -1,6 +1,7 @@
 import "reflect-metadata";
 
 import { ApolloServer } from "apollo-server-express";
+import { SearchResolver } from "./modules/search/resolver";
 import { buildSchema } from "type-graphql";
 import cors from "cors";
 import express from "express";
@@ -8,14 +9,13 @@ import morgan from "morgan";
 import { port } from "./env";
 
 async function bootstrap() {
-  // const schema = await buildSchema({
-  //   resolvers: []
-  // })
+  const schema = await buildSchema({
+    resolvers: [SearchResolver],
+  });
 
-  // const server = new ApolloServer({
-  //   schema,
-  //   playground: true
-  // })
+  const server = new ApolloServer({
+    schema,
+  });
 
   const app = express();
 
@@ -27,7 +27,9 @@ async function bootstrap() {
 
   app.use(cors());
 
-  // server.applyMiddleware({ app });
+  await server.start();
+
+  server.applyMiddleware({ app });
 
   app.listen(port, () => {
     console.log(
