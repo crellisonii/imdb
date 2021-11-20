@@ -2,6 +2,7 @@ import { Arg, Query, Resolver } from "type-graphql";
 import { SearchInput } from ".";
 import { green, log, magenta, red, yellow } from "../../helpers";
 import {
+  getSearchAllUrl,
   getSearchCompanyUrl,
   getSearchEpisodesUrl,
   getSearchMoviesUrl,
@@ -13,6 +14,30 @@ import { SearchData } from "./types";
 
 @Resolver()
 export class SearchResolver {
+  @Query(returns => SearchData, {
+    description:
+      "Search all (Movie, Tv shows, Tv episodes, People, Company) by name/title",
+  })
+  async searchAll(
+    @Arg("searchInput") input: SearchInput
+  ): Promise<SearchData | string> {
+    try {
+      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      const { expression, language } = input;
+      const url = getSearchAllUrl(expression, language);
+      const options: AxiosRequestConfig = {
+        url,
+        method: "GET",
+      };
+      log(green("search options: "), green(JSON.stringify(options)));
+      const resp = await axios(options);
+      return resp.data;
+    } catch (e) {
+      log(red("Search Error: "), red(JSON.stringify(e)));
+      throw new Error("Error");
+    }
+  }
+
   @Query(returns => SearchData, { description: "Search companies by name" })
   async searchCompany(
     @Arg("searchInput") input: SearchInput
