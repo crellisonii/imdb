@@ -1,8 +1,8 @@
 import { Arg, Query, Resolver } from "type-graphql";
 import { SearchInput } from ".";
-import { log } from "../../helpers";
-import chalk from "chalk";
+import { green, log, magenta, red, yellow } from "../../helpers";
 import {
+  getSearchEpisodesUrl,
   getSearchMoviesUrl,
   getSearchNamesUrl,
   getSearchSeriesUrl,
@@ -17,24 +17,18 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(
-        chalk.magentaBright("Search input: "),
-        chalk.yellowBright(JSON.stringify(input))
-      );
+      log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
       const url = getSearchMoviesUrl(expression, language);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
       };
-      log(
-        chalk.green("search options: "),
-        chalk.white(JSON.stringify(options))
-      );
+      log(green("search options: "), green(JSON.stringify(options)));
       const resp = await axios(options);
       return resp.data;
     } catch (e) {
-      log(chalk.redBright("Search Error: "), chalk.red(JSON.stringify(e)));
+      log(red("Search Error: "), red(JSON.stringify(e)));
       throw new Error("Error");
     }
   }
@@ -44,24 +38,18 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(
-        chalk.magentaBright("Search input: "),
-        chalk.yellowBright(JSON.stringify(input))
-      );
+      log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
       const url = getSearchSeriesUrl(expression, language);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
       };
-      log(
-        chalk.green("search options: "),
-        chalk.white(JSON.stringify(options))
-      );
+      log(green("search options: "), green(JSON.stringify(options)));
       const resp = await axios(options);
       return resp.data;
     } catch (e) {
-      log(chalk.redBright("Search Error: "), chalk.red(JSON.stringify(e)));
+      log(red("Search Error: "), red(JSON.stringify(e)));
       throw new Error("Error");
     }
   }
@@ -71,24 +59,39 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(
-        chalk.magentaBright("Search input: "),
-        chalk.yellowBright(JSON.stringify(input))
-      );
+      log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
       const url = getSearchNamesUrl(expression, language);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
       };
-      log(
-        chalk.green("search options: "),
-        chalk.white(JSON.stringify(options))
-      );
+      log(green("search options: "), green(JSON.stringify(options)));
       const resp = await axios(options);
       return resp.data;
     } catch (e) {
-      log(chalk.redBright("Search Error: "), chalk.red(JSON.stringify(e)));
+      log(red("Search Error: "), red(JSON.stringify(e)));
+      throw new Error("Error");
+    }
+  }
+
+  @Query(returns => SearchData, { description: "Search tv episodes by title" })
+  async searchEpisodes(
+    @Arg("searchInput") input: SearchInput
+  ): Promise<SearchData | string> {
+    try {
+      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      const { expression, language } = input;
+      const url = getSearchEpisodesUrl(expression, language);
+      const options: AxiosRequestConfig = {
+        url,
+        method: "GET",
+      };
+      log(green("search options: "), green(JSON.stringify(options)));
+      const resp = await axios(options);
+      return resp.data;
+    } catch (e) {
+      log(red("Search Error: "), red(JSON.stringify(e)));
       throw new Error("Error");
     }
   }
