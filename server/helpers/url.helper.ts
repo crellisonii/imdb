@@ -1,5 +1,6 @@
 import {
   baseUrl,
+  searchAllUrl,
   searchCompanyUrl,
   searchEpisodesUrl,
   searchMovieUrl,
@@ -15,6 +16,10 @@ const getUrlPrefix = (language: string): string => {
 
 const getUrlSuffix = (expression: string): string => {
   return `/${apiKey}/${expression}`;
+};
+
+export const getSearchAllUrl = (expression: string, language: string) => {
+  return `${getUrlPrefix(language)}${searchAllUrl}${getUrlSuffix(expression)}`;
 };
 
 export const getSearchCompanyUrl = (expression: string, language: string) => {
