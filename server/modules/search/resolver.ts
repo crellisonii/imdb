@@ -25,12 +25,12 @@ export class SearchResolver {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
       const url = getSearchAllUrl(expression, language);
-      const options: AxiosRequestConfig = {
+      const config: AxiosRequestConfig = {
         url,
         method: "GET",
       };
-      log(green("search options: "), green(JSON.stringify(options)));
-      const resp = await axios(options);
+      log(green("Search options: "), green(JSON.stringify(config)));
+      const resp = await axios(config);
       return resp.data;
     } catch (e) {
       log(red("Search Error: "), red(JSON.stringify(e)));
