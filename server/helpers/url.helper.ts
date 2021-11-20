@@ -1,5 +1,6 @@
 import {
   baseUrl,
+  searchEpisodesUrl,
   searchMovieUrl,
   searchNameUrl,
   searchSeriesUrl,
@@ -31,3 +32,8 @@ export const getSearchNamesUrl = (expression: string, language: string) => {
   return `${getUrlPrefix(language)}${searchNameUrl}${getUrlSuffix(expression)}`;
 };
 
+export const getSearchEpisodesUrl = (expression: string, language: string) => {
+  return `${getUrlPrefix(language)}${searchEpisodesUrl}${getUrlSuffix(
+    expression
+  )}`;
+};
