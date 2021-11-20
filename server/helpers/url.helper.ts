@@ -1,9 +1,23 @@
-import { baseUrl, searchUrl } from "../constants/imdb-url.constant";
+import { baseUrl, searchMovieUrl, searchSeriesUrl } from "../constants";
 
 import { apiKey } from "../env";
 
-export const getSearchUrl = (expression: string, language: string) => {
-  return `${baseUrl}/${language}${searchUrl}/${apiKey}/${encodeURIComponent(
+const getUrlPrefix = (language: string): string => {
+  return `${baseUrl}/${language}/API`;
+};
+
+const getUrlSuffix = (expression: string): string => {
+  return `/${apiKey}/${expression}`;
+};
+
+export const getSearchMovieUrl = (expression: string, language: string) => {
+  return `${getUrlPrefix(language)}${searchMovieUrl}${getUrlSuffix(
+    expression
+  )}`;
+};
+
+export const getSearchSeriesUrl = (expression: string, language: string) => {
+  return `${getUrlPrefix(language)}${searchSeriesUrl}${getUrlSuffix(
     expression
   )}`;
 };
