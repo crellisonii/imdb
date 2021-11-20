@@ -11,3 +11,5 @@ export const searchMovieUrl = "/SearchMovie";
 export const searchNameUrl = "/SearchName";
 
 export const searchSeriesUrl = "/SearchSeries";
+
+export const titleUrl = "/Title";

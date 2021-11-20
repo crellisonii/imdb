@@ -1,7 +1,8 @@
 import "reflect-metadata";
 
 import { ApolloServer } from "apollo-server-express";
-import { SearchResolver } from "./modules/search/resolver";
+import { SearchResolver } from "./modules/search";
+import { TitleResolver } from "./modules/title";
 import { buildSchema } from "type-graphql";
 import cors from "cors";
 import express from "express";
@@ -10,7 +11,7 @@ import { port } from "./env";
 
 async function bootstrap() {
   const schema = await buildSchema({
-    resolvers: [SearchResolver],
+    resolvers: [SearchResolver, TitleResolver],
   });
 
   const server = new ApolloServer({
