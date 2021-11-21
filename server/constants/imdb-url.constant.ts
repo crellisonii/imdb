@@ -6,6 +6,8 @@ export const imageUrl = "/Images";
 
 export const posterUrl = "/Posters";
 
+export const ratingUrl = "/Ratings";
+
 export const searchAllUrl = "/SearchAll";
 
 export const searchCompanyUrl = "/SearchCompany";
