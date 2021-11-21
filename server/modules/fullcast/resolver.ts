@@ -1,9 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { magenta, green, red } from "chalk";
-import { log } from "console";
 import { Arg, Query, Resolver } from "type-graphql";
 import { FullCastData, FullCastInput } from ".";
-import { getFullCastUrl } from "../../helpers";
+import { getFullCastUrl, green, log, magenta, red } from "../../helpers";
 
 @Resolver()
 export class FullCastResolver {

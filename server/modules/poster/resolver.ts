@@ -1,20 +1,20 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
-import { TitleData, TitleInput } from ".";
-import { getTitleUrl, green, log, magenta, red } from "../../helpers";
+import { PosterData, PosterInput } from ".";
+import { getPosterUrl, green, log, magenta, red } from "../../helpers";
 
 @Resolver()
-export class TitleResolver {
-  @Query(returns => TitleData, {
-    description: "Get the title details given the id",
+export class PosterResolver {
+  @Query(returns => PosterData, {
+    description: "Get the posters for the given id",
   })
-  async getTitle(
-    @Arg("titleInput") input: TitleInput
-  ): Promise<TitleData | string> {
+  async getPosters(
+    @Arg("posterInput") input: PosterInput
+  ): Promise<PosterData | string> {
     try {
       log(magenta("Title input: "), magenta(JSON.stringify(input)));
-      const { id, language, options } = input;
-      const url = getTitleUrl(id, language, options);
+      const { id, language } = input;
+      const url = getPosterUrl(id, language);
       const config: AxiosRequestConfig = {
         url,
         method: "GET",
