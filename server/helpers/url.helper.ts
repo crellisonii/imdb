@@ -14,6 +14,7 @@ import {
 } from "../constants";
 
 import { apiKey } from "../env";
+import { ratingUrl } from "../constants/imdb-url.constant";
 
 const getUrlPrefix = (language: string): string => {
   return `${baseUrl}/${language}/API`;
@@ -41,6 +42,10 @@ export const getImageUrl = (
 
 export const getPosterUrl = (id: string, language: string): string => {
   return `${getUrlPrefix(language)}${posterUrl}${getUrlSuffix(id)}`;
+};
+
+export const getRatingsUrl = (id: string, language: string): string => {
+  return `${getUrlPrefix(language)}${ratingUrl}${getUrlSuffix(id)}`;
 };
 
 export const getSearchAllUrl = (expression: string, language: string) => {

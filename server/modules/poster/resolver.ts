@@ -12,18 +12,18 @@ export class PosterResolver {
     @Arg("posterInput") input: PosterInput
   ): Promise<PosterData | string> {
     try {
-      log(magenta("Title input: "), magenta(JSON.stringify(input)));
+      log(magenta("Poster input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
       const url = getPosterUrl(id, language);
       const config: AxiosRequestConfig = {
         url,
         method: "GET",
       };
-      log(green("Title config: "), green(JSON.stringify(config)));
+      log(green("Poster config: "), green(JSON.stringify(config)));
       const resp = await axios(config);
       return resp.data;
     } catch (e) {
-      log(red("Title Error: "), red(JSON.stringify(e)));
+      log(red("Poster Error: "), red(JSON.stringify(e)));
       throw new Error("Error");
     }
   }
