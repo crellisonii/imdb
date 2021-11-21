@@ -2,6 +2,8 @@ export const baseUrl = "https://imdb-api.com";
 
 export const fullCastUrl = "/FullCast";
 
+export const imageUrl = "/Images";
+
 export const posterUrl = "/Posters";
 
 export const searchAllUrl = "/SearchAll";
