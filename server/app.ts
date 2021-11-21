@@ -6,6 +6,7 @@ import {
   PosterResolver,
   SearchResolver,
   TitleResolver,
+  TrailerResolver,
 } from "./modules";
 
 import { ApolloServer } from "apollo-server-express";
@@ -23,6 +24,7 @@ async function bootstrap() {
       PosterResolver,
       SearchResolver,
       TitleResolver,
+      TrailerResolver,
     ],
   });
 
