@@ -1,6 +1,7 @@
 import {
   baseUrl,
   fullCastUrl,
+  imageUrl,
   posterUrl,
   searchAllUrl,
   searchCompanyUrl,
@@ -27,6 +28,14 @@ const getSearchUrlSuffix = (expression: string): string => {
 
 export const getFullCastUrl = (id: string, language: string): string => {
   return `${getUrlPrefix(language)}${fullCastUrl}${getUrlSuffix(id)}`;
+};
+
+export const getImageUrl = (
+  id: string,
+  language: string,
+  options: string
+): string => {
+  return `${getUrlPrefix(language)}${imageUrl}${getUrlSuffix(id)}/${options}`;
 };
 
 export const getPosterUrl = (id: string, language: string): string => {
