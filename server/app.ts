@@ -2,6 +2,7 @@ import "reflect-metadata";
 
 import {
   FullCastResolver,
+  ImageResolver,
   PosterResolver,
   SearchResolver,
   TitleResolver,
@@ -18,6 +19,7 @@ async function bootstrap() {
   const schema = await buildSchema({
     resolvers: [
       FullCastResolver,
+      ImageResolver,
       PosterResolver,
       SearchResolver,
       TitleResolver,
