@@ -1,9 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { magenta, green, red } from "chalk";
-import { log } from "console";
 import { Arg, Query, Resolver } from "type-graphql";
 import { TitleData, TitleInput } from ".";
-import { getTitleUrl } from "../../helpers";
+import { getTitleUrl, green, log, magenta, red } from "../../helpers";
 
 @Resolver()
 export class TitleResolver {

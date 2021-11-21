@@ -1,6 +1,5 @@
 import { Arg, Query, Resolver } from "type-graphql";
 import { SearchInput } from ".";
-import { green, log, magenta, red, yellow } from "../../helpers";
 import {
   getSearchAllUrl,
   getSearchCompanyUrl,
@@ -8,7 +7,12 @@ import {
   getSearchMoviesUrl,
   getSearchNamesUrl,
   getSearchSeriesUrl,
-} from "../../helpers/url.helper";
+  green,
+  log,
+  magenta,
+  red,
+  yellow,
+} from "../../helpers";
 import axios, { AxiosRequestConfig } from "axios";
 import { SearchData } from "./types";
 
