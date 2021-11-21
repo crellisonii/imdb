@@ -1,9 +1,13 @@
 import "reflect-metadata";
 
+import {
+  FullCastResolver,
+  PosterResolver,
+  SearchResolver,
+  TitleResolver,
+} from "./modules";
+
 import { ApolloServer } from "apollo-server-express";
-import { FullCastResolver } from "./modules/fullcast/resolver";
-import { SearchResolver } from "./modules/search";
-import { TitleResolver } from "./modules/title";
 import { buildSchema } from "type-graphql";
 import cors from "cors";
 import express from "express";
@@ -12,7 +16,12 @@ import { port } from "./env";
 
 async function bootstrap() {
   const schema = await buildSchema({
-    resolvers: [FullCastResolver, SearchResolver, TitleResolver],
+    resolvers: [
+      FullCastResolver,
+      PosterResolver,
+      SearchResolver,
+      TitleResolver,
+    ],
   });
 
   const server = new ApolloServer({
