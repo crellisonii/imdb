@@ -10,6 +10,7 @@ import {
   searchNameUrl,
   searchSeriesUrl,
   titleUrl,
+  trailerUrl,
 } from "../constants";
 
 import { apiKey } from "../env";
@@ -80,4 +81,8 @@ export const getSearchSeriesUrl = (expression: string, language: string) => {
 
 export const getTitleUrl = (id: string, language: string, options: string) => {
   return `${getUrlPrefix(language)}${titleUrl}${getUrlSuffix(id)}/${options}`;
+};
+
+export const getTrailerUrl = (id: string, language: string): string => {
+  return `${getUrlPrefix(language)}${trailerUrl}${getUrlSuffix(id)}`;
 };
