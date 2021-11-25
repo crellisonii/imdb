@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { PosterData, PosterInput } from ".";
-import { getPosterUrl, green, log, magenta, red } from "../../helpers";
+import { getPosterUrl } from "../../helpers";
 import { getImdbService } from "../../services";
+import { green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class PosterResolver {

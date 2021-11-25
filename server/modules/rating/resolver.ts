@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { RatingData, RatingInput } from ".";
-import { getRatingsUrl, green, log, magenta, red } from "../../helpers";
+import { getRatingsUrl } from "../../helpers";
 import { getImdbService } from "../../services";
+import { green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class RatingResolver {

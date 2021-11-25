@@ -7,15 +7,11 @@ import {
   getSearchMoviesUrl,
   getSearchNamesUrl,
   getSearchSeriesUrl,
-  green,
-  log,
-  magenta,
-  red,
-  yellow,
 } from "../../helpers";
 import axios, { AxiosRequestConfig } from "axios";
 import { SearchData } from "./types";
 import { getImdbService } from "../../services";
+import { green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class SearchResolver {

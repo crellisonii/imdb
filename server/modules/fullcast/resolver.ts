@@ -1,8 +1,9 @@
 import { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { FullCastData, FullCastInput } from ".";
-import { blue, getFullCastUrl, green, log, magenta, red } from "../../helpers";
+import { getFullCastUrl } from "../../helpers";
 import { getImdbService } from "../../services/imdb.service";
+import { green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class FullCastResolver {
