@@ -20,6 +20,8 @@ export const searchNameUrl = "/SearchName";
 
 export const searchSeriesUrl = "/SearchSeries";
 
+export const seasonEpisodeUrl = "/SeasonEpisodes";
+
 export const titleUrl = "/Title";
 
 export const trailerUrl = "/Trailer";

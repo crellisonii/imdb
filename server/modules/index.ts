@@ -3,6 +3,7 @@ export * from "./image";
 export * from "./poster";
 export * from "./rating";
 export * from "./search";
+export * from "./season-episodes";
 export * from "./title";
 export * from "./trailer";
 export * from "./user-rating";
