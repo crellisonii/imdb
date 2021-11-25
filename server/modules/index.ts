@@ -5,4 +5,5 @@ export * from "./rating";
 export * from "./search";
 export * from "./title";
 export * from "./trailer";
+export * from "./user-rating";
 export * from "./wikipedia";
