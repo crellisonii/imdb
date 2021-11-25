@@ -23,3 +23,5 @@ export const searchSeriesUrl = "/SearchSeries";
 export const titleUrl = "/Title";
 
 export const trailerUrl = "/Trailer";
+
+export const userRatingUrl = "/UserRatings";

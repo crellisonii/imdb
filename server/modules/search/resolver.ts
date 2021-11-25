@@ -7,14 +7,11 @@ import {
   getSearchMoviesUrl,
   getSearchNamesUrl,
   getSearchSeriesUrl,
-  green,
-  log,
-  magenta,
-  red,
-  yellow,
 } from "../../helpers";
 import axios, { AxiosRequestConfig } from "axios";
 import { SearchData } from "./types";
+import { getImdbService } from "../../services";
+import { green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class SearchResolver {
@@ -29,12 +26,9 @@ export class SearchResolver {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
       const url = getSearchAllUrl(expression, language);
-      const config: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
+      const config: AxiosRequestConfig = { url };
       log(green("Search options: "), green(JSON.stringify(config)));
-      const resp = await axios(config);
+      const resp = await getImdbService<SearchData>(config);
       return resp.data;
     } catch (e) {
       log(red("Search Error: "), red(JSON.stringify(e)));
