@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { PosterData, PosterInput } from ".";
 import { getPosterUrl, green, log, magenta, red } from "../../helpers";
+import { getImdbService } from "../../services";
 
 @Resolver()
 export class PosterResolver {
@@ -15,12 +16,9 @@ export class PosterResolver {
       log(magenta("Poster input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
       const url = getPosterUrl(id, language);
-      const config: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
+      const config: AxiosRequestConfig = { url };
       log(green("Poster config: "), green(JSON.stringify(config)));
-      const resp = await axios(config);
+      const resp = await getImdbService<PosterData>(config);
       return resp.data;
     } catch (e) {
       log(red("Poster Error: "), red(JSON.stringify(e)));

@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { RatingData, RatingInput } from ".";
 import { getRatingsUrl, green, log, magenta, red } from "../../helpers";
+import { getImdbService } from "../../services";
 
 @Resolver()
 export class RatingResolver {
@@ -15,12 +16,9 @@ export class RatingResolver {
       log(magenta("Rating input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
       const url = getRatingsUrl(id, language);
-      const config: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
+      const config: AxiosRequestConfig = { url };
       log(green("Rating options: "), green(JSON.stringify(config)));
-      const resp = await axios(config);
+      const resp = await getImdbService<RatingData>(config);
       return resp.data;
     } catch (e) {
       log(red("Rating Error: "), red(JSON.stringify(e)));
