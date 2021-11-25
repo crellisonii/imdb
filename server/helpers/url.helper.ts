@@ -12,9 +12,9 @@ import {
   titleUrl,
   trailerUrl,
 } from "../constants";
+import { ratingUrl, userRatingUrl } from "../constants/imdb-url.constant";
 
 import { apiKey } from "../env";
-import { ratingUrl } from "../constants/imdb-url.constant";
 
 const getUrlPrefix = (language: string): string => {
   return `${baseUrl}/${language}/API`;
@@ -90,4 +90,8 @@ export const getTitleUrl = (id: string, language: string, options: string) => {
 
 export const getTrailerUrl = (id: string, language: string): string => {
   return `${getUrlPrefix(language)}${trailerUrl}${getUrlSuffix(id)}`;
+};
+
+export const getUserRatingUrl = (id: string, language: string): string => {
+  return `${getUrlPrefix(language)}${userRatingUrl}${getUrlSuffix(id)}`;
 };
