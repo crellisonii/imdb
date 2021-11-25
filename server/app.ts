@@ -10,6 +10,7 @@ import {
   TitleResolver,
   TrailerResolver,
   UserRatingResolver,
+  WikipediaResolver,
 } from "./modules";
 
 import { ApolloServer } from "apollo-server-express";
@@ -31,6 +32,7 @@ async function bootstrap() {
       TitleResolver,
       TrailerResolver,
       UserRatingResolver,
+      WikipediaResolver,
     ],
   });
 
