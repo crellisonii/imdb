@@ -27,3 +27,5 @@ export const titleUrl = "/Title";
 export const trailerUrl = "/Trailer";
 
 export const userRatingUrl = "/UserRatings";
+
+export const wikipediaUrl = "/Wikipedia";

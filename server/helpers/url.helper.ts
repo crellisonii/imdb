@@ -16,6 +16,7 @@ import {
   ratingUrl,
   seasonEpisodeUrl,
   userRatingUrl,
+  wikipediaUrl,
 } from "../constants/imdb-url.constant";
 
 import { apiKey } from "../env";
@@ -126,4 +127,8 @@ export const getTrailerUrl = (id: string, language: string): string => {
 
 export const getUserRatingUrl = (id: string, language: string): string => {
   return `${getUrlPrefix(language)}${userRatingUrl}${getUrlSuffix(id)}`;
+};
+
+export const getWikipediaUrl = (id: string, language: string): string => {
+  return `${getUrlPrefix(language)}${wikipediaUrl}${getUrlSuffix(id)}`;
 };
