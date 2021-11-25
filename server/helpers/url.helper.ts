@@ -12,7 +12,11 @@ import {
   titleUrl,
   trailerUrl,
 } from "../constants";
-import { ratingUrl, userRatingUrl } from "../constants/imdb-url.constant";
+import {
+  ratingUrl,
+  seasonEpisodeUrl,
+  userRatingUrl,
+} from "../constants/imdb-url.constant";
 
 import { apiKey } from "../env";
 
@@ -48,40 +52,68 @@ export const getRatingsUrl = (id: string, language: string): string => {
   return `${getUrlPrefix(language)}${ratingUrl}${getUrlSuffix(id)}`;
 };
 
-export const getSearchAllUrl = (expression: string, language: string) => {
+export const getSearchAllUrl = (
+  expression: string,
+  language: string
+): string => {
   return `${getUrlPrefix(language)}${searchAllUrl}${getSearchUrlSuffix(
     expression
   )}`;
 };
 
-export const getSearchCompanyUrl = (expression: string, language: string) => {
+export const getSearchCompanyUrl = (
+  expression: string,
+  language: string
+): string => {
   return `${getUrlPrefix(language)}${searchCompanyUrl}${getSearchUrlSuffix(
     expression
   )}`;
 };
 
-export const getSearchEpisodesUrl = (expression: string, language: string) => {
+export const getSearchEpisodesUrl = (
+  expression: string,
+  language: string
+): string => {
   return `${getUrlPrefix(language)}${searchEpisodesUrl}${getSearchUrlSuffix(
     expression
   )}`;
 };
 
-export const getSearchMoviesUrl = (expression: string, language: string) => {
+export const getSearchMoviesUrl = (
+  expression: string,
+  language: string
+): string => {
   return `${getUrlPrefix(language)}${searchMovieUrl}${getSearchUrlSuffix(
     expression
   )}`;
 };
 
-export const getSearchNamesUrl = (expression: string, language: string) => {
+export const getSearchNamesUrl = (
+  expression: string,
+  language: string
+): string => {
   return `${getUrlPrefix(language)}${searchNameUrl}${getSearchUrlSuffix(
     expression
   )}`;
 };
 
-export const getSearchSeriesUrl = (expression: string, language: string) => {
+export const getSearchSeriesUrl = (
+  expression: string,
+  language: string
+): string => {
   return `${getUrlPrefix(language)}${searchSeriesUrl}${getSearchUrlSuffix(
     expression
   )}`;
+};
+
+export const getSeasonEpisodeUrl = (
+  id: string,
+  language: string,
+  seasonNumber: string
+): string => {
+  return `${getUrlPrefix(
+    language
+  )}${seasonEpisodeUrl}${getUrlSuffix}/${seasonNumber}`;
 };
 
 export const getTitleUrl = (id: string, language: string, options: string) => {
