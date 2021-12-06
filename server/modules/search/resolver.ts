@@ -16,16 +16,16 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      log(magenta("Search All input: "), input);
       const { expression, language } = input;
       const url = buildUrl(language, "/SearchAll", expression);
       log(cyan("Search All url: "), url);
       const config: AxiosRequestConfig = { url };
-      log(green("Search options: "), green(JSON.stringify(config)));
+      log(green("Search All config: "), config);
       const resp = await getImdbService<SearchData>(config);
       return resp.data;
     } catch (e) {
-      log(red("Search Error: "), red(JSON.stringify(e)));
+      log(red("Search All Error: "), e);
       throw new Error("Error");
     }
   }
@@ -35,19 +35,16 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      log(magenta("Search Company input: "), input);
       const { expression, language } = input;
       const url = buildUrl(language, "/SearchCompany", expression);
       log(cyan("Search Company url: "), url);
-      const options: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
-      log(green("search options: "), green(JSON.stringify(options)));
-      const resp = await axios(options);
+      const config: AxiosRequestConfig = { url };
+      log(green("Search Company config: "), config);
+      const resp = await getImdbService<SearchData>(config);
       return resp.data;
     } catch (e) {
-      log(red("Search Error: "), red(JSON.stringify(e)));
+      log(red("Search Company Error: "), e);
       throw new Error("Error");
     }
   }
@@ -57,19 +54,35 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      log(magenta("Search Episodes input: "), input);
       const { expression, language } = input;
       const url = buildUrl(language, "/SearchEpisode", expression);
       log(cyan("Search Espisodes url: "), url);
-      const options: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
-      log(green("search options: "), green(JSON.stringify(options)));
-      const resp = await axios(options);
+      const config: AxiosRequestConfig = { url };
+      log(green("Search Episodes config: "), config);
+      const resp = await getImdbService<SearchData>(config);
       return resp.data;
     } catch (e) {
-      log(red("Search Error: "), red(JSON.stringify(e)));
+      log(red("Search Episodes Error: "), e);
+      throw new Error("Error");
+    }
+  }
+
+  @Query(returns => SearchData)
+  async searchKeywords(
+    @Arg("searchInput") input: SearchInput
+  ): Promise<SearchData | string> {
+    try {
+      log(magenta("Search Keyword input: "), input);
+      const { expression, language } = input;
+      const url = buildUrl(language, "/SearchKeyword", expression);
+      log(cyan("Search Keyword url: "), url);
+      const config: AxiosRequestConfig = { url };
+      log(green("Search Keyword config: "), config);
+      const resp = await getImdbService<SearchData>(config);
+      return resp.data;
+    } catch (e) {
+      log(red("Search Keyword Error: "), e);
       throw new Error("Error");
     }
   }
@@ -79,19 +92,16 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      log(magenta("Search Movie input: "), input);
       const { expression, language } = input;
       const url = buildUrl(language, "/SearchMovie", expression);
       log(cyan("Search Movies url: "), url);
-      const options: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
-      log(green("search options: "), green(JSON.stringify(options)));
-      const resp = await axios(options);
+      const config: AxiosRequestConfig = { url };
+      log(green("Search Movies config: "), config);
+      const resp = await getImdbService<SearchData>(config);
       return resp.data;
     } catch (e) {
-      log(red("Search Error: "), red(JSON.stringify(e)));
+      log(red("Search Movies Error: "), e);
       throw new Error("Error");
     }
   }
@@ -101,19 +111,16 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      log(magenta("Search Names input: "), input);
       const { expression, language } = input;
       const url = buildUrl(language, "/SearchName", expression);
       log(cyan("Search Names url: "), url);
-      const options: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
-      log(green("search options: "), green(JSON.stringify(options)));
-      const resp = await axios(options);
+      const config: AxiosRequestConfig = { url };
+      log(green("Search Names config: "), config);
+      const resp = await getImdbService<SearchData>(config);
       return resp.data;
     } catch (e) {
-      log(red("Search Error: "), red(JSON.stringify(e)));
+      log(red("Search Names Error: "), e);
       throw new Error("Error");
     }
   }
@@ -123,18 +130,15 @@ export class SearchResolver {
     @Arg("searchInput") input: SearchInput
   ): Promise<SearchData | string> {
     try {
-      log(magenta("Search input: "), magenta(JSON.stringify(input)));
+      log(magenta("Search Series input: "), input);
       const { expression, language } = input;
       const url = buildUrl(language, "/SearchSeries", expression);
-      const options: AxiosRequestConfig = {
-        url,
-        method: "GET",
-      };
-      log(green("search options: "), green(JSON.stringify(options)));
-      const resp = await axios(options);
+      const config: AxiosRequestConfig = { url };
+      log(green("Search Series config: "), config);
+      const resp = await axios(config);
       return resp.data;
     } catch (e) {
-      log(red("Search Error: "), red(JSON.stringify(e)));
+      log(red("Search Series Error: "), e);
       throw new Error("Error");
     }
   }
