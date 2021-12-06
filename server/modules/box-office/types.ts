@@ -13,6 +13,36 @@ export class BoxOfficeShort {
 }
 
 @ObjectType()
+export class BoxOfficeAllTimeDataDetail {
+  @Field(type => String)
+  domestic: string;
+  @Field(type => String)
+  domesticLifetimeGross: string;
+  @Field(type => String)
+  foreign: string;
+  @Field(type => String)
+  foreignLifetimeGross: string;
+  @Field(type => String)
+  id: string;
+  @Field(type => String)
+  rank: string;
+  @Field(type => String)
+  title: string;
+  @Field(type => String)
+  worldwideLifetimeGross: string;
+  @Field(type => String)
+  year: string;
+}
+
+@ObjectType()
+export class BoxOfficeAllTimeData {
+  @Field(type => String)
+  errorMessage: string;
+  @Field(type => [BoxOfficeAllTimeDataDetail])
+  items: BoxOfficeAllTimeDataDetail[];
+}
+
+@ObjectType()
 export class BoxOfficeWeekendDataDetail {
   @Field(type => String)
   gross: string;

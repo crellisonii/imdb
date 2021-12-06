@@ -1,5 +1,5 @@
 import { Arg, Query, Resolver } from "type-graphql";
-import { BoxOfficeWeekendData } from ".";
+import { BoxOfficeAllTimeData, BoxOfficeWeekendData } from ".";
 import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
@@ -21,6 +21,24 @@ export class BoxOfficeResolver {
       return resp.data;
     } catch (e) {
       log(red("Box Office Weekend error: "), e);
+      throw new Error("Error");
+    }
+  }
+
+  @Query(returns => BoxOfficeAllTimeData)
+  async getBoxOfficeAllTime(
+    @Arg("boxOfficeInput", { nullable: true }) input: string = "en"
+  ): Promise<BoxOfficeAllTimeData | string> {
+    try {
+      log(magenta("Box Office All Time input: "), input);
+      const url = buildUrl(input, "/BoxOfficeAllTime");
+      log(cyan("Box Office All Time url: "), url);
+      const config: AxiosRequestConfig = { url };
+      log(green("Box Office All Time config: "), config);
+      const resp = await getImdbService<BoxOfficeAllTimeData>(config);
+      return resp.data;
+    } catch (e) {
+      log(red("Box Office All Time error: "), e);
       throw new Error("Error");
     }
   }
