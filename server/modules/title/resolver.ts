@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { TitleData, TitleInput } from ".";
-import { getTitleUrl } from "../../helpers";
+import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
-import { green, log, magenta, red } from "../../utils";
+import { cyan, green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class TitleResolver {
@@ -16,7 +16,8 @@ export class TitleResolver {
     try {
       log(magenta("Title input: "), magenta(JSON.stringify(input)));
       const { id, language, options } = input;
-      const url = getTitleUrl(id, language, options);
+      const url = buildUrl(language, "/Title", `/${id}/${options}`);
+      log(cyan("Title url: "), url);
       const config: AxiosRequestConfig = {
         url,
         method: "GET",
