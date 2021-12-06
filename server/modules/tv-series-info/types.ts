@@ -8,10 +8,13 @@ export class TvSeriesInfo {
     description: "Array of Tv Series creators in StarShort type",
   })
   creatorList: StarShort[];
+
   @Field(type => String, { description: "String of Tv Series creators" })
   creators: string;
+
   @Field(type => [String], { description: "Array of seasons" })
   seasons: string[];
+
   @Field(type => String, { description: "The year the Tv Series ended" })
   yearEnd: string;
 }

@@ -4,6 +4,7 @@ import { Field, InputType } from "type-graphql";
 export class TrailerInput {
   @Field(type => String, { description: "This id of the title" })
   id: string;
+
   @Field(type => String, {
     nullable: true,
     defaultValue: "en",

@@ -4,6 +4,7 @@ import { Field, InputType } from "type-graphql";
 export class SearchInput {
   @Field(type => String, { description: "The expression to search for" })
   expression: string;
+
   @Field(type => String, {
     nullable: true,
     defaultValue: "en",

@@ -4,6 +4,7 @@ import { Field, InputType } from "type-graphql";
 export class FullCastInput {
   @Field(type => String, { description: "The id of the title" })
   id: string;
+
   @Field(type => String, {
     nullable: true,
     defaultValue: "en",
