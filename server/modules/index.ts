@@ -1,5 +1,6 @@
 export * from "./box-office";
 export * from "./coming-soon";
+export * from "./company";
 export * from "./fullcast";
 export * from "./image";
 export * from "./in-theaters";
