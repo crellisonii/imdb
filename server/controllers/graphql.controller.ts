@@ -1,14 +1,12 @@
 import { NextFunction, Request, Response } from "express";
-
-import chalk from "chalk";
-import { log } from "../helpers";
+import { blue, log } from "../helpers";
 
 export const graphqlController = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  log(chalk.blueBright("graphql req: ", req));
+  log(blue("graphql req: ", req));
   next();
 };
 
