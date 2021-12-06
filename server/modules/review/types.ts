@@ -1,6 +1,48 @@
 import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
+class MetacriticReviewDetail {
+  @Field(type => String)
+  author: string;
+
+  @Field(type => String)
+  content: string;
+
+  @Field(type => String)
+  link: string;
+
+  @Field(type => String)
+  publisher: string;
+
+  @Field(type => String)
+  rate: string;
+}
+
+@ObjectType()
+export class MetacriticReviewData {
+  @Field(type => String)
+  errorMessage: string;
+
+  @Field(type => String)
+  fullTitle: string;
+
+  @Field(type => String)
+  imDbId: string;
+
+  @Field(type => [MetacriticReviewDetail])
+  items: MetacriticReviewDetail[];
+
+  @Field(type => String)
+  title: string;
+
+  @Field(type => String)
+  type: string;
+
+  @Field(type => String)
+  year: string;
+}
+
+@ObjectType()
 class ReviewDetail {
   @Field(type => String)
   content: string;
