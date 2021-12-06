@@ -1,17 +1,10 @@
 import { Arg, Query, Resolver } from "type-graphql";
 import { SearchInput } from ".";
-import {
-  getSearchAllUrl,
-  getSearchCompanyUrl,
-  getSearchEpisodesUrl,
-  getSearchMoviesUrl,
-  getSearchNamesUrl,
-  getSearchSeriesUrl,
-} from "../../helpers";
+import { buildUrl } from "../../helpers";
 import axios, { AxiosRequestConfig } from "axios";
 import { SearchData } from "./types";
 import { getImdbService } from "../../services";
-import { green, log, magenta, red } from "../../utils";
+import { cyan, green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class SearchResolver {
@@ -25,7 +18,8 @@ export class SearchResolver {
     try {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
-      const url = getSearchAllUrl(expression, language);
+      const url = buildUrl(language, "/SearchAll", expression);
+      log(cyan("Search All url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Search options: "), green(JSON.stringify(config)));
       const resp = await getImdbService<SearchData>(config);
@@ -43,7 +37,8 @@ export class SearchResolver {
     try {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
-      const url = getSearchCompanyUrl(expression, language);
+      const url = buildUrl(language, "/SearchCompany", expression);
+      log(cyan("Search Company url: "), url);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
@@ -64,7 +59,8 @@ export class SearchResolver {
     try {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
-      const url = getSearchEpisodesUrl(expression, language);
+      const url = buildUrl(language, "/SearchEpisode", expression);
+      log(cyan("Search Espisodes url: "), url);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
@@ -85,7 +81,8 @@ export class SearchResolver {
     try {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
-      const url = getSearchMoviesUrl(expression, language);
+      const url = buildUrl(language, "/SearchMovie", expression);
+      log(cyan("Search Movies url: "), url);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
@@ -106,7 +103,8 @@ export class SearchResolver {
     try {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
-      const url = getSearchNamesUrl(expression, language);
+      const url = buildUrl(language, "/SearchName", expression);
+      log(cyan("Search Names url: "), url);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
@@ -127,7 +125,7 @@ export class SearchResolver {
     try {
       log(magenta("Search input: "), magenta(JSON.stringify(input)));
       const { expression, language } = input;
-      const url = getSearchSeriesUrl(expression, language);
+      const url = buildUrl(language, "/SearchSeries", expression);
       const options: AxiosRequestConfig = {
         url,
         method: "GET",
