@@ -1,12 +1,14 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { RatingData, RatingInput } from ".";
-import { getRatingsUrl } from "../../helpers";
+import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
-import { green, log, magenta, red } from "../../utils";
+import { cyan, green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class RatingResolver {
+  path = "/Ratings";
+
   @Query(returns => RatingData, {
     description: "Get the rating for a given title",
   })
@@ -16,7 +18,8 @@ export class RatingResolver {
     try {
       log(magenta("Rating input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
-      const url = getRatingsUrl(id, language);
+      const url = buildUrl(language, this.path, id);
+      log(cyan("Ratings url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Rating options: "), green(JSON.stringify(config)));
       const resp = await getImdbService<RatingData>(config);

@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { TrailerData, TrailerInput } from ".";
-import { getTrailerUrl } from "../../helpers";
+import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
-import { green, log, magenta, red } from "../../utils";
+import { cyan, green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class TrailerResolver {
@@ -16,7 +16,8 @@ export class TrailerResolver {
     try {
       log(magenta("Trailer input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
-      const url = getTrailerUrl(id, language);
+      const url = buildUrl(language, "/Trailer", id);
+      log(cyan("Trailer url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Trailer options: "), green(JSON.stringify(config)));
       const resp = await getImdbService<TrailerData>(config);
