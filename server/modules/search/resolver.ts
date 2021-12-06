@@ -135,7 +135,7 @@ export class SearchResolver {
       const url = buildUrl(language, "/SearchSeries", expression);
       const config: AxiosRequestConfig = { url };
       log(green("Search Series config: "), config);
-      const resp = await axios(config);
+      const resp = await getImdbService<SearchData>(config);
       return resp.data;
     } catch (e) {
       log(red("Search Series Error: "), e);

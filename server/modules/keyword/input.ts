@@ -1,7 +1,7 @@
 import { Field, InputType } from "type-graphql";
 
 @InputType()
-export class ReviewInput {
+export class KeywordInput {
   @Field(type => String)
   id: string;
 
