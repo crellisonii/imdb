@@ -8,6 +8,7 @@ export * from "./most-popular";
 export * from "./name";
 export * from "./poster";
 export * from "./rating";
+export * from "./review";
 export * from "./search";
 export * from "./season-episodes";
 export * from "./title";
