@@ -4,6 +4,7 @@ export * from "./fullcast";
 export * from "./image";
 export * from "./in-theaters";
 export * from "./most-popular";
+export * from "./name";
 export * from "./poster";
 export * from "./rating";
 export * from "./search";
