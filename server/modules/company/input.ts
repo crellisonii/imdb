@@ -5,6 +5,6 @@ export class CompanyInput {
   @Field(type => String)
   id: string;
 
-  @Field(type => String)
+  @Field(type => String, { nullable: true, defaultValue: "en" })
   language: string;
 }
