@@ -1,3 +1,4 @@
+export * from "./box-office";
 export * from "./coming-soon";
 export * from "./fullcast";
 export * from "./image";

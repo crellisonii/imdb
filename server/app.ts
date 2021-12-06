@@ -1,6 +1,7 @@
 import "reflect-metadata";
 
 import {
+  BoxOfficeResolver,
   ComingSoonResolver,
   FullCastResolver,
   ImageResolver,
@@ -26,6 +27,7 @@ import { port } from "./env";
 async function bootstrap() {
   const schema = await buildSchema({
     resolvers: [
+      BoxOfficeResolver,
       ComingSoonResolver,
       FullCastResolver,
       ImageResolver,
