@@ -1,6 +1,6 @@
 export * from "./fullcast";
 export * from "./image";
-export * from "./most-popular-movies";
+export * from "./most-popular";
 export * from "./poster";
 export * from "./rating";
 export * from "./search";

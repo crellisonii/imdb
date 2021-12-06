@@ -1,7 +1,7 @@
 import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
-class MostPopularMovieDataDetail {
+class MostPopularDataDetail {
   @Field(type => String)
   crew: string;
   @Field(type => String)
@@ -25,9 +25,9 @@ class MostPopularMovieDataDetail {
 }
 
 @ObjectType()
-export class MostPopularMovieData {
+export class MostPopularData {
   @Field(type => String)
   errorMessage: string;
-  @Field(type => [MostPopularMovieDataDetail])
-  items: MostPopularMovieDataDetail[];
+  @Field(type => [MostPopularDataDetail])
+  items: MostPopularDataDetail[];
 }
