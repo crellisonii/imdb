@@ -1,34 +1,7 @@
 import { Field, ObjectType } from "type-graphql";
 
-@ObjectType()
-export class ActorShort {
-  @Field(type => String, { description: "Character info" })
-  asCharacter: string;
-  @Field(type => String, { description: "The id of the actor" })
-  id: string;
-  @Field(type => String, { description: "The actor's image" })
-  image: string;
-  @Field(type => String, { description: "The name of the actor" })
-  name: string;
-}
-
-@ObjectType()
-class CastShort {
-  @Field(type => [CastShortItem], { description: "Cast info" })
-  items: CastShortItem[];
-  @Field(type => String, { description: "The job of the cast member" })
-  job: string;
-}
-
-@ObjectType()
-class CastShortItem {
-  @Field(type => String, { description: "The cast credit description" })
-  description: string;
-  @Field(type => String, { description: "The id of the title" })
-  id: string;
-  @Field(type => String, { description: "The cast member name" })
-  name: string;
-}
+import { ActorShort } from "../actor";
+import { CastShort } from "../cast";
 
 @ObjectType()
 export class FullCastData {

@@ -3,6 +3,7 @@ import "reflect-metadata";
 import {
   FullCastResolver,
   ImageResolver,
+  InTheaterResolver,
   MostPopularResolver,
   PosterResolver,
   RatingResolver,
@@ -26,6 +27,7 @@ async function bootstrap() {
     resolvers: [
       FullCastResolver,
       ImageResolver,
+      InTheaterResolver,
       MostPopularResolver,
       PosterResolver,
       RatingResolver,

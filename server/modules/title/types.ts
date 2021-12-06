@@ -1,93 +1,19 @@
-import { ActorShort, FullCastData } from "../fullcast";
-import { Field, Float, Int, ObjectType } from "type-graphql";
+import { Field, ObjectType } from "type-graphql";
 
+import { ActorShort } from "../actor";
+import { BoxOfficeShort } from "../box-office";
+import { CompanyShort } from "../company";
+import { FullCastData } from "../fullcast";
 import { ImageData } from "../image";
+import { KeyValueItem } from "../key-value";
 import { PosterData } from "../poster";
 import { RatingData } from "../rating";
+import { SimilarShort } from "../similar";
+import { StarShort } from "../star";
 import { TrailerData } from "../trailer";
+import { TvEpisodeInfo } from "../tv-episode-info";
+import { TvSeriesInfo } from "../tv-series-info";
 import { WikipediaData } from "../wikipedia";
-
-@ObjectType()
-class StarShort {
-  @Field(type => String, { description: "The id of a star in the title" })
-  id: string;
-  @Field(type => String, { description: "The name of a star in the title" })
-  name: string;
-}
-
-@ObjectType()
-class KeyValueItem {
-  @Field(type => String, { description: "the item key" })
-  key: string;
-  @Field(type => String, { description: "The item value" })
-  value: string;
-}
-
-@ObjectType()
-class CompanyShort {
-  @Field(type => String, { description: "The id of the company" })
-  id: string;
-  @Field(type => String, { description: "The name of the company" })
-  name: string;
-}
-
-@ObjectType()
-class SimilarShort {
-  @Field(type => String, { description: "Similar title id" })
-  id: string;
-  @Field(type => String, { description: "Similar title image url" })
-  image: string;
-  @Field(type => String, { description: "Similar title name" })
-  title: string;
-}
-
-@ObjectType()
-class TvSeriesInfo {
-  @Field(type => [StarShort], {
-    description: "Array of Tv Series creators in StarShort type",
-  })
-  creatorList: StarShort[];
-  @Field(type => String, { description: "String of Tv Series creators" })
-  creators: string;
-  @Field(type => [String], { description: "Array of seasons" })
-  seasons: string[];
-  @Field(type => String, { description: "The year the Tv Series ended" })
-  yearEnd: string;
-}
-
-@ObjectType()
-class TvEpisodeInfo {
-  @Field(type => String, { description: "The episode number" })
-  episodeNumber: string;
-  @Field(type => String, { description: "The id of the next episode" })
-  nextEpisodeId: string;
-  @Field(type => String, { description: "The id of the previous episode" })
-  previousEpisodeId: string;
-  @Field(type => String, { description: "The season number" })
-  seasonNumber: string;
-  @Field(type => String, { description: "The series full title" })
-  seriesFullTitle: string;
-  @Field(type => String, { description: "The id of the series" })
-  seriesId: string;
-  @Field(type => String, { description: "The title of the series" })
-  seriesTitle: string;
-  @Field(type => String, { description: "The year the episode was made" })
-  year: string;
-  @Field(type => String, { description: "The year end" })
-  yearEnd: string;
-}
-
-@ObjectType()
-class BoxOfficeShort {
-  @Field(type => String, { description: "The budget of the title" })
-  budget: string;
-  @Field(type => String, { description: "World wide gross" })
-  cumulativeWorldWideGross: string;
-  @Field(type => String, { description: "Gross USA" })
-  grossUSA: string;
-  @Field(type => String, { description: "Opening weekend USA" })
-  openingWeekendUSA: string;
-}
 
 @ObjectType()
 export class TitleData {
