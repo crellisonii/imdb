@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { blue, log } from "../helpers";
+import { blue, log } from "../utils";
 
 export const graphqlController = (
   req: Request,
