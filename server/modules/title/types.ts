@@ -216,3 +216,9 @@ export class TitleData {
   @Field(type => String, { description: "The year of the title's release" })
   year: string;
 }
+
+@ObjectType()
+export class TitlesData {
+  @Field(type => [TitleData])
+  titlesData: TitleData[];
+}

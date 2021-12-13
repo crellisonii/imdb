@@ -19,3 +19,15 @@ export class TitleInput {
   })
   options: string;
 }
+
+@InputType({ description: "Input type for multiple title queries" })
+export class TitlesInput {
+  @Field(type => [String])
+  ids: string[];
+
+  @Field(type => String, { nullable: true, defaultValue: "en" })
+  language: string;
+
+  @Field(type => String, { nullable: true })
+  options: string;
+}
