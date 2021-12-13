@@ -41,3 +41,9 @@ export class NameData {
   @Field(type => String)
   summary: string;
 }
+
+@ObjectType()
+export class NamesData {
+  @Field(type => [NameData])
+  namesData: NameData[];
+}
