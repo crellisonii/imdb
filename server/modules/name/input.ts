@@ -8,3 +8,12 @@ export class NameInput {
   @Field(type => String, { nullable: true, defaultValue: "en" })
   language: string;
 }
+
+@InputType()
+export class NamesInput {
+  @Field(type => [String])
+  ids: string[];
+
+  @Field(type => String, { nullable: true, defaultValue: "en" })
+  language: string;
+}
