@@ -5,6 +5,7 @@ import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services";
 import e from "express";
+import { namePath } from "../../constants";
 
 @Resolver()
 export class NameResolver {
@@ -15,7 +16,7 @@ export class NameResolver {
     try {
       log(magenta("Name input: "), input);
       const { id, language } = input;
-      const url = buildUrl(language, "/Name", id);
+      const url = buildUrl(language, namePath, id);
       log(cyan("Name url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Name config: "), config);
@@ -36,7 +37,7 @@ export class NameResolver {
       const { ids, language } = input;
       const namesData: NameData[] = [];
       for (let i = 0; i < ids.length; i++) {
-        const url = buildUrl(language, "/Name", ids[i]);
+        const url = buildUrl(language, namePath, ids[i]);
         log(cyan("Names url: "), url);
         const config: AxiosRequestConfig = { url };
         log(green("Names config: "), config);

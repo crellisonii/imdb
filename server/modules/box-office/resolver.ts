@@ -4,6 +4,7 @@ import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services";
+import { boxOfficeAlltimePath, boxOfficePath } from "../../constants";
 
 @Resolver()
 export class BoxOfficeResolver {
@@ -13,7 +14,7 @@ export class BoxOfficeResolver {
   ): Promise<BoxOfficeWeekendData | string> {
     try {
       log(magenta("Box Office Weekend input: "), input);
-      const url = buildUrl(input, "/BoxOffice");
+      const url = buildUrl(input, boxOfficePath);
       log(cyan("Box Office Weekend url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Box Office Weekend config: "), config);
@@ -31,7 +32,7 @@ export class BoxOfficeResolver {
   ): Promise<BoxOfficeAllTimeData | string> {
     try {
       log(magenta("Box Office All Time input: "), input);
-      const url = buildUrl(input, "/BoxOfficeAllTime");
+      const url = buildUrl(input, boxOfficeAlltimePath);
       log(cyan("Box Office All Time url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Box Office All Time config: "), config);

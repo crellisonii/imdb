@@ -4,6 +4,7 @@ import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services";
+import { metacriticReviewPath, reviewPath } from "../../constants";
 
 @Resolver()
 export class ReviewResolver {
@@ -14,7 +15,7 @@ export class ReviewResolver {
     try {
       log(magenta("Review input: "), input);
       const { id, language } = input;
-      const url = buildUrl(language, "/Reviews", id);
+      const url = buildUrl(language, reviewPath, id);
       log(cyan("Review url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Review config"), config);
@@ -33,7 +34,7 @@ export class ReviewResolver {
     try {
       log(magenta("Metacritic Review input: "), input);
       const { id, language } = input;
-      const url = buildUrl(language, "/MetacriticReviews", id);
+      const url = buildUrl(language, metacriticReviewPath, id);
       log(cyan("Metacritic Review url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Metacritic Review config"), config);

@@ -4,6 +4,7 @@ import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services/imdb.service";
+import { keywordPath } from "../../constants";
 
 @Resolver()
 export class KeywordResolver {
@@ -14,7 +15,7 @@ export class KeywordResolver {
     try {
       log(magenta("Keyword input: "), input);
       const { id, language } = input;
-      const url = buildUrl(language, "/Keyword", id);
+      const url = buildUrl(language, keywordPath, id);
       log(cyan("Keyword url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Keyword config"), config);

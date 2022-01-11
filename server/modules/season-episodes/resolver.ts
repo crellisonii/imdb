@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { SeasonEpisodeData, SeasonEpisodeInput } from ".";
+import { seasonEpisodesPath } from "../../constants";
 import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
 import { cyan, green, log, magenta, red } from "../../utils";
@@ -18,7 +19,7 @@ export class SeasonEpisodeResolver {
       const { id, language, seasonNumber } = input;
       const url = buildUrl(
         language,
-        "/SeasonEpisodes",
+        seasonEpisodesPath,
         `/${id}/${seasonNumber}`
       );
       log(cyan("Season Episodes url: "), url);

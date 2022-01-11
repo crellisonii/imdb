@@ -1,14 +1,13 @@
 import { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { FullCastData, FullCastInput } from ".";
+import { fullCastPath } from "../../constants";
 import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services/imdb.service";
 import { cyan, green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class FullCastResolver {
-  path = "/FullCast";
-
   @Query(returns => FullCastData, {
     description: "Get the full cast/crew for a given title",
   })
@@ -18,7 +17,7 @@ export class FullCastResolver {
     try {
       log(magenta("FullCast input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
-      const url = buildUrl(language, this.path, id);
+      const url = buildUrl(language, fullCastPath, id);
       log(cyan("FullCast url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("FullCast options: "), green(JSON.stringify(config)));

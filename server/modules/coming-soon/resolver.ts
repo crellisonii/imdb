@@ -4,6 +4,7 @@ import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services";
+import { comingSoonPath } from "../../constants";
 
 @Resolver()
 export class ComingSoonResolver {
@@ -13,7 +14,7 @@ export class ComingSoonResolver {
   ): Promise<NewMovieData | string> {
     try {
       log(magenta("Coming Soon input: "), input);
-      const url = buildUrl(input, "/ComingSoon");
+      const url = buildUrl(input, comingSoonPath);
       log(cyan("Coming Soon url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Coming Soon config: "), config);
