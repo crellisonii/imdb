@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { UserRatingData, UserRatingInput } from ".";
+import { userRatingPath } from "../../constants";
 import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
 import { cyan, green, log, magenta, red } from "../../utils";
@@ -16,7 +17,7 @@ export class UserRatingResolver {
     try {
       log(magenta("UserRating input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
-      const url = buildUrl(language, "/UserRatings", id);
+      const url = buildUrl(language, userRatingPath, id);
       log(cyan("User Rating url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("UserRating options: "), green(JSON.stringify(config)));

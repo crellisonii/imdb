@@ -1,14 +1,13 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { PosterData, PosterInput } from ".";
+import { posterPath } from "../../constants";
 import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
 import { cyan, green, log, magenta, red } from "../../utils";
 
 @Resolver()
 export class PosterResolver {
-  path = "/Posters";
-
   @Query(returns => PosterData, {
     description: "Get the posters for the given id",
   })
@@ -18,7 +17,7 @@ export class PosterResolver {
     try {
       log(magenta("Poster input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
-      const url = buildUrl(language, this.path, id);
+      const url = buildUrl(language, posterPath, id);
       log(cyan("Posters url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Poster config: "), green(JSON.stringify(config)));

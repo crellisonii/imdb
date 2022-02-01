@@ -4,6 +4,7 @@ import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services";
+import { inTheaterPath } from "../../constants";
 
 @Resolver()
 export class InTheaterResolver {
@@ -13,7 +14,7 @@ export class InTheaterResolver {
   ): Promise<NewMovieData | string> {
     try {
       log(magenta("In Theater input"), input);
-      const url = buildUrl(input, "/InTheaters");
+      const url = buildUrl(input, inTheaterPath);
       log(cyan("In Theater url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("In Theater config: "), config);

@@ -4,6 +4,7 @@ import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services";
+import { companyPath } from "../../constants";
 
 @Resolver()
 export class CompanyResolver {
@@ -14,7 +15,7 @@ export class CompanyResolver {
     try {
       log(magenta("Company input: "), input);
       const { id, language } = input;
-      const url = buildUrl(language, "/Company", id);
+      const url = buildUrl(language, companyPath, id);
       log(cyan("Company url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Company config: "), config);

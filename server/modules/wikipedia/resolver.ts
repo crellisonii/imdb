@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { WikipediaData, WikipediaInput } from ".";
+import { wikipediaPath } from "../../constants";
 import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
 import { cyan, green, log, magenta, red } from "../../utils";
@@ -16,7 +17,7 @@ export class WikipediaResolver {
     try {
       log(magenta("Wikipedia input: "), magenta(JSON.stringify(input)));
       const { id, language } = input;
-      const url = buildUrl(language, "/Wikipedia", id);
+      const url = buildUrl(language, wikipediaPath, id);
       log(cyan("Wikipedia url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Wikipedia options: "), green(JSON.stringify(config)));

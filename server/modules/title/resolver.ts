@@ -1,6 +1,7 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 import { Arg, Query, Resolver } from "type-graphql";
 import { TitlesData, TitlesInput, TitleData, TitleInput } from ".";
+import { titlePath } from "../../constants";
 import { buildUrl } from "../../helpers";
 import { getImdbService } from "../../services";
 import { cyan, green, log, magenta, red } from "../../utils";
@@ -16,7 +17,7 @@ export class TitleResolver {
     try {
       log(magenta("Title input: "), input);
       const { id, language, options } = input;
-      const url = buildUrl(language, "/Title", `/${id}/${options}`);
+      const url = buildUrl(language, titlePath, `/${id}/${options}`);
       log(cyan("Title url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Title config: "), config);
@@ -37,7 +38,7 @@ export class TitleResolver {
       log(magenta("Titles input: "), input);
       const { ids, language, options } = input;
       for (let i = 0; i < ids.length; i++) {
-        const url = buildUrl(language, "/Title", `/${ids[i]}/${options}`);
+        const url = buildUrl(language, titlePath, `/${ids[i]}/${options}`);
         log(cyan("Titles url: "), url);
         const config: AxiosRequestConfig = { url };
         log(green("Titles config: "), config);

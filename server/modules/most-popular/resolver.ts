@@ -4,6 +4,7 @@ import { buildUrl } from "../../helpers";
 import { cyan, green, log, magenta, red } from "../../utils";
 import { AxiosRequestConfig } from "axios";
 import { getImdbService } from "../../services";
+import { mostPopularMoviePath, mostPopularTVPath } from "../../constants";
 
 @Resolver()
 export class MostPopularResolver {
@@ -13,7 +14,7 @@ export class MostPopularResolver {
   ): Promise<MostPopularData | string> {
     try {
       log(magenta("Most Popular Movies input: "), input);
-      const url = buildUrl(input, "/MostPopularMovies");
+      const url = buildUrl(input, mostPopularMoviePath);
       log(cyan("Most Popular Movies url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Most Popular Movies options: "), config);
@@ -31,7 +32,7 @@ export class MostPopularResolver {
   ): Promise<MostPopularData | string> {
     try {
       log(magenta("Most Popular TV input: "), input);
-      const url = buildUrl(input, "/MostPopularTVs");
+      const url = buildUrl(input, mostPopularTVPath);
       log(cyan("Most Popular TV url: "), url);
       const config: AxiosRequestConfig = { url };
       log(green("Most Popular TV options: "), config);
